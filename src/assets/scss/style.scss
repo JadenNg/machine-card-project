@@ -1,0 +1,94 @@
+.ck-editor__editable {
+    min-height: 40vh !important;
+    max-height: 80vh !important;
+}
+
+.thumbnails_image {
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    max-width: 100%;
+}
+
+.main-content {
+    overflow: visible;
+}
+
+.text-link-edit {
+    cursor: pointer;
+    color: $blue;
+}
+
+td.comment {
+    max-width: 40vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.alignLeft {
+  float: left;
+}
+.alignRight {
+  float: right;
+}
+
+
+.checkout-tabs {
+    .nav-pills {
+        .nav-link {
+            margin-bottom: 24px;
+            text-align: center;
+            background-color: $card-bg;
+            box-shadow: $box-shadow;
+
+            &.active {
+                background-color: $primary;
+            }
+
+            .check-nav-icon {
+                font-size: 36px;
+            }
+        }
+    }
+}
+
+.extra-action {
+    visibility: hidden;
+}
+
+.article-extra-action:hover {
+    .extra-action {
+        visibility: visible;
+    }
+}
+
+.image {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.image img {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.image.alignLeft {
+    width: 50% !important;
+    margin-right: 20px;
+    float: left;
+}
+
+.image.alignRight {
+    width: 50% !important;
+    margin-left: 20px;
+    float: right;
+}
+
+.content-info img {
+    width: 100%;
+}
+.mx-datepicker,
+.mx-input-wrapper,
+.mx-input {
+  height: 41px !important;
+}

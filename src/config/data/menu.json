@@ -1,0 +1,71 @@
+[
+  {
+    "title": "Chính",
+    "type": "header"
+  },
+  {
+    "title": "Home",
+    "to": "/admin/home",
+    "icon": "bx bx-home",
+    "type": "item",
+    "active": false,
+    "role": [1,2]
+  },
+  {
+    "title": "Machine",
+    "type": "item",
+    "to": "/admin/machines",
+    "icon": "bx bx-food-menu",
+    "active": false,
+    "role": [1, 99],
+    "children": [
+      {
+        "title": "List",
+        "name": "admin.machines.list"
+      },
+      {
+        "title": "Create",
+        "name": "admin.machines.create",
+        "role": [1]
+      }
+    ]
+  },
+  {
+    "title": "Workstations",
+    "type": "item",
+    "to": "/admin/workstations",
+    "active": false,
+    "icon": "bx bx-book",
+    "role": [1, 99],
+    "children": [
+      {
+        "title": "List",
+        "name": "admin.workstations.list"
+      },
+      {
+        "title": "Create",
+        "name": "admin.workstations.create",
+        "role": [1]
+      }
+    ]
+  },
+  {
+    "title": "Manage user",
+    "active": false,
+    "icon": "bx bx-shield-quarter",
+    "to": "",
+    "role": [1, 99],
+    "children": [
+      {
+        "title": "List",
+        "name": "admin.users.list"
+      }
+      ,
+      {
+        "title": "Create",
+        "name": "admin.users.create",
+        "role": [1]
+      }
+    ]
+  }
+]
