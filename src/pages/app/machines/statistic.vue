@@ -72,10 +72,12 @@
                 <div class="col-12">
                     <b-card title="OTHER MACHINE">
                         <div class="row mt-3">
-                            <div :class="{ 'disabled-machine': form._id == item._id }"
-                                class="col-lg-3 col-md-4 col-xs-12 mx-2 py-4 mb-4 d-flex justify-content-center style-machine"
-                                v-for="(item, index) in listMachine" :key="index" v-html="formatHtml(item.CPUData)"
-                                @click="updateForm(item)">
+                            <div v-for="(item, index) in listMachine" :key="index" class="col col-lg-3 col-md-4 col-xs-12">
+                                <div :class="{ 'disabled-machine': form._id == item._id }"
+                                    class="mx-2 py-4 mb-4 d-flex justify-content-center style-machine"
+                                    v-html="formatHtml(item.CPUData)"
+                                    @click="updateForm(item)">
+                                </div>
                             </div>
                         </div>
                     </b-card>
@@ -156,6 +158,7 @@ export default {
         },
         updateForm(entry) {
             this.form = entry;
+            window.scrollTo(0,0)
         },
         async getData() {
             let id = this.$route.params.id;

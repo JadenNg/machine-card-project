@@ -53,12 +53,12 @@
                                     </b-button>
                                 </td>
                                 <td class="text-center" style="font-size: 16px">
-                                    <router-link v-show="isShow" v-b-tooltip.hover :title="`statistics`" class="text-warning"
+                                    <router-link v-show="isShow" v-b-tooltip.hover :title="`Statistics`" class="text-warning"
                                         :to="{
                                             name: 'admin.machines.statistic',
                                             params: { id: entry._id },
                                         }">
-                                        <i class='bx bx-info-circle'></i>
+                                        <i class='bx bx-right-arrow-circle'></i>
                                     </router-link>
                                     <a href="javascript: void(0);" v-b-tooltip.hover :title="`Detail`" class="text-dark"
                                         @click.prevent="openModal(entry)"><i class="bx bx-poll"></i></a>
