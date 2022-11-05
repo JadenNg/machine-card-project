@@ -45,16 +45,12 @@
                                     {{ entry.otherInfo }}
                                 </td>
                                 <td class="text-center">
-                                    <b-dropdown :disabled="!isShow" :text="(entry.status == 1) ? 'Opening' : 'Closing'"
-                                        :variant="(entry.status == 1) ? 'outline-success' : 'outline-warning'"
-                                        class="m-2">
-                                        <b-dropdown-item :disabled="entry.status == 1"
-                                            @click="updateStatus(entry, status = 1)" href="#">Open
-                                        </b-dropdown-item>
-                                        <b-dropdown-item :disabled="entry.status == 2"
-                                            @click="updateStatus(entry, status = 2)" href="#">Close
-                                        </b-dropdown-item>
-                                    </b-dropdown>
+                                    <b-button :disabled="!isShow" v-if="entry.status == 1" @click="updateStatus(entry)"
+                                        variant="outline-success">Opening
+                                    </b-button>
+                                    <b-button :disabled="!isShow" v-else @click="updateStatus(entry)"
+                                        variant="outline-danger">Closing
+                                    </b-button>
                                 </td>
                                 <td class="text-center" style="font-size: 16px">
                                     <a href="javascript: void(0);" v-b-tooltip.hover :title="`Detail`" class="text-dark"
@@ -76,26 +72,29 @@
                 </div>
                 <!-- Modal -->
                 <div>
-                    <b-modal  title="Infomation machine" ref="my-modal" :hide-header="true" :hide-footer="true" :hide-header-close="false"
-                        :centered="true" cancel-title>
-                        <div class="container py-3 px-5" style="border: 4px solid #069eea; border-radius: 8px;">
+                    <b-modal title="Infomation machine" ref="my-modal" :hide-header="true" :hide-footer="true" centered
+                        cancel-title>
+                        <div class="container position-relative py-3 px-5"
+                            style="border: 4px solid #069eea; border-radius: 8px;">
+                            <span style="top: -18px; right: -18px;" class="position-absolute pointer"><i
+                                    @click="hideModal()" style="font-size: 20px;" class="bx bx-x"></i></span>
                             <div class="row">
-                                <div class="col text-center">
+                                <div class="col-sm-6 col-xs-12 text-center">
                                     <h5 class="style-h5">Analog input</h5>
                                     <div v-html="formatHtml(dataModal.analogInput)"></div>
                                 </div>
-                                <div class="col text-center">
+                                <div class="col-sm-6 col-xs-12 text-center">
                                     <h5 class="style-h5">Analog output</h5>
                                     <div v-html="formatHtml(dataModal.analogOutput)"></div>
                                 </div>
                             </div>
-                            <hr  style="border-color: #069eea; border-width: 3px;" />
+                            <hr style="border-color: #069eea; border-width: 3px;" />
                             <div class="row">
-                                <div class="col text-center">
+                                <div class="col-sm-6 col-xs-12 text-center">
                                     <h5 class="style-h5">Digital input</h5>
                                     <div v-html="formatHtml(dataModal.digitalInput)"></div>
                                 </div>
-                                <div class="col text-center">
+                                <div class="col-sm-6 col-xs-12 text-center">
                                     <h5 class="style-h5">Digital output</h5>
                                     <div v-html="formatHtml(dataModal.digitalOutput)"></div>
                                 </div>
@@ -184,6 +183,9 @@ export default {
             this.dataModal = entry;
             this.$refs['my-modal'].show()
         },
+        hideModal() {
+            this.$refs['my-modal'].hide()
+        },
         formatHtml(data) {
             if (!data.includes(',')) return data;
             let htmlFormat = "";
@@ -264,8 +266,8 @@ export default {
                 },
             },]);
         },
-        async updateStatus(entry, status) {
-            let label = (status == 1) ? "Open" : "Close";
+        async updateStatus(entry) {
+            let label = (entry.status == 1) ? "Close" : "Open"
             await Swal.queue([
                 {
                     title: `Change machine ${entry.CPUData} to <b>${label}</b>?`,
@@ -278,7 +280,7 @@ export default {
                     preConfirm: async () => {
                         let response = await httpClient.post(`machine/change-status`, {
                             id: entry._id,
-                            status
+                            status: (entry.status == 1) ? 2 : 1
                         });
                         if (response.data.code === 0) {
                             Swal.insertQueueStep({
@@ -313,6 +315,7 @@ export default {
 .pointer:hover {
     cursor: pointer;
 }
+
 .style-h5 {
     color: #0e71d3;
     text-shadow: 1px 1px #6044c8;
