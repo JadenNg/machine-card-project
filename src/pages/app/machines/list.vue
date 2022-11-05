@@ -76,27 +76,27 @@
                 </div>
                 <!-- Modal -->
                 <div>
-                    <b-modal title="Infomation machine" ref="my-modal" :hide-footer="true" :hide-header-close="false"
+                    <b-modal  title="Infomation machine" ref="my-modal" :hide-header="true" :hide-footer="true" :hide-header-close="false"
                         :centered="true" cancel-title>
-                        <div class="container">
+                        <div class="container py-3 px-5" style="border: 4px solid #069eea; border-radius: 8px;">
                             <div class="row">
                                 <div class="col text-center">
-                                    <h5>Analog input</h5>
+                                    <h5 class="style-h5">Analog input</h5>
                                     <div v-html="formatHtml(dataModal.analogInput)"></div>
                                 </div>
                                 <div class="col text-center">
-                                    <h5>Analog output</h5>
+                                    <h5 class="style-h5">Analog output</h5>
                                     <div v-html="formatHtml(dataModal.analogOutput)"></div>
                                 </div>
                             </div>
-                            <hr>
+                            <hr  style="border-color: #069eea; border-width: 3px;" />
                             <div class="row">
                                 <div class="col text-center">
-                                    <h5>Digital input</h5>
+                                    <h5 class="style-h5">Digital input</h5>
                                     <div v-html="formatHtml(dataModal.digitalInput)"></div>
                                 </div>
                                 <div class="col text-center">
-                                    <h5>Digital output</h5>
+                                    <h5 class="style-h5">Digital output</h5>
                                     <div v-html="formatHtml(dataModal.digitalOutput)"></div>
                                 </div>
                             </div>
@@ -312,5 +312,11 @@ export default {
 
 .pointer:hover {
     cursor: pointer;
+}
+.style-h5 {
+    color: #0e71d3;
+    text-shadow: 1px 1px #6044c8;
+    font-weight: 700;
+    text-decoration: underline;
 }
 </style>
