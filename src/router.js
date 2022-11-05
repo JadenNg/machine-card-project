@@ -72,6 +72,11 @@ export const router = new Router({
                             path: 'edit/:id',
                             name: 'admin.machines.edit',
                             component: () => import('./pages/app/machines/edit'),
+                        },
+                        {
+                            path: 'statistic/:id',
+                            name: 'admin.machines.statistic',
+                            component: () => import('./pages/app/machines/statistic'),
                         }
                     ],
                 },
