@@ -7,61 +7,61 @@
                     <b-card>
                         <div class="style-info">
                             <div class="row">
-                                <div class="col-2 style-font">
+                                <div class="col-lg-3 col-md-4 col-sm-5 style-font">
                                     Workstation:
                                 </div>
                                 <div class="col">{{ form.workstation }}</div>
                             </div>
                             <div class="row">
-                                <div class="col-2 style-font">
+                                <div class="col-lg-3 col-md-4 col-sm-5 style-font">
                                     CPU data:
                                 </div>
                                 <div class="col">{{ form.CPUData }}</div>
                             </div>
                             <div class="row">
-                                <div class="col-2 style-font">
+                                <div class="col-lg-3 col-md-4 col-sm-5 style-font">
                                     Application:
                                 </div>
                                 <div class="col">{{ form.application }}</div>
                             </div>
                             <div class="row">
-                                <div class="col-2 style-font">
+                                <div class="col-lg-3 col-md-4 col-sm-5 style-font">
                                     Profinet infomation:
                                 </div>
                                 <div class="col">{{ form.profinetInfomation }}</div>
                             </div>
                             <div class="row">
-                                <div class="col-2 style-font">
+                                <div class="col-lg-3 col-md-4 col-sm-5 style-font">
                                     Profibus address:
                                 </div>
                                 <div class="col">{{ form.profibusAddress }}</div>
                             </div>
                             <div class="row">
-                                <div class="col-2 style-font">
+                                <div class="col-lg-3 col-md-4 col-sm-5 style-font">
                                     Analog input:
                                 </div>
                                 <div class="col">{{ form.analogInput }}</div>
                             </div>
                             <div class="row">
-                                <div class="col-2 style-font">
+                                <div class="col-lg-3 col-md-4 col-sm-5 style-font">
                                     Analog output:
                                 </div>
                                 <div class="col">{{ form.analogOutput }}</div>
                             </div>
                             <div class="row">
-                                <div class="col-2 style-font">
+                                <div class="col-lg-3 col-md-4 col-sm-5 style-font">
                                     Digital iInput:
                                 </div>
                                 <div class="col">{{ form.digitalInput }}</div>
                             </div>
                             <div class="row">
-                                <div class="col-2 style-font">
+                                <div class="col-lg-3 col-md-4 col-sm-5 style-font">
                                     Digital output:
                                 </div>
                                 <div class="col">{{ form.digitalOutput }}</div>
                             </div>
                             <div class="row">
-                                <div class="col-2 style-font">
+                                <div class="col-lg-3 col-md-4 col-sm-5 style-font">
                                     Other infomations:
                                 </div>
                                 <div class="col">{{ form.otherInfo }}</div>
@@ -72,9 +72,9 @@
                 <div class="col-12">
                     <b-card title="OTHER MACHINE">
                         <div class="row mt-3">
-                            <div v-for="(item, index) in listMachine" :key="index" class="col col-lg-3 col-md-4 col-xs-12">
+                            <div v-for="(item, index) in listMachine" :key="index" class="col-lg-3 col-md-4 col-xs-12">
                                 <div :class="{ 'disabled-machine': form._id == item._id }"
-                                    class="mx-2 py-4 mb-4 d-flex justify-content-center style-machine"
+                                    class="py-4 mb-4 d-flex justify-content-center style-machine"
                                     v-html="formatHtml(item.CPUData)"
                                     @click="updateForm(item)">
                                 </div>
@@ -157,6 +157,7 @@ export default {
             console.log(this.listMachine, "machi");
         },
         updateForm(entry) {
+            if(this.form._id == entry._id) return;
             this.form = entry;
             window.scrollTo(0,0)
         },
